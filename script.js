@@ -15,9 +15,13 @@ function askAllTheQuestions(){
   console.log(numberOfCharacters);
 
   if( numberOfCharacters < 8 || numberOfCharacters > 128 ){
-    alert("Bad move bozo");
-    askAllTheQuestions();
+    alert("You MUST enter a value between 8 and 128");
+    return;
+  } else {
+      numberOfCharacters = parseInt(askNumberofCharacters);
+  console.log(numberOfCharacters);
   }
+
 
   //Asking whether the user would like to add special characters to their password
   specialCharsAllowed = window.confirm ("Would you like to include Special Charaters in your password? Click 'Ok' for yes and 'Cancel' for no.");
@@ -34,6 +38,11 @@ function askAllTheQuestions(){
   // Asking whether the user would like to add upper case letters to their password
   upperCaseAllowed = window.confirm("Would you like to include UPPER case letters in your password? Click 'Ok' for yes and 'Cancel' for no.");
   console.log(upperCaseAllowed);
+
+  if ( numbersAllowed !== true && specialCharsAllowed !== true && lowerCaseAllowed !== true && upperCaseAllowed !== true ){
+    alert("You need to select at least one type of character. Try again");
+    return;
+  }
 }
 
   // Functions for getting the types of characters the user would like
