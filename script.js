@@ -8,14 +8,23 @@ var lowerCaseAllowed = false;
 var upperCaseAllowed = false;
 
 function askAllTheQuestions(){
+  //resetting my universal variables
+  numberOfCharacters = 0;
+  specialCharsAllowed = false;
+  numbersAllowed = false;
+  lowerCaseAllowed = false;
+  upperCaseAllowed = false;
+
   //Identifying the number of characters the user would like to use
   var askNumberofCharacters = window.prompt("How many characters do you want in your password? (8-128)");
   
   numberOfCharacters = parseInt(askNumberofCharacters);
   console.log(numberOfCharacters);
 
-  if( numberOfCharacters < 8 || numberOfCharacters > 128 ){
+  if( numberOfCharacters < 8 || numberOfCharacters > 128 || isNaN(numberOfCharacters)){
     alert("You MUST enter a value between 8 and 128");
+    return; 
+  } else if (askNumberofCharacters == "" || askNumberofCharacters == null){
     return;
   } else {
       numberOfCharacters = parseInt(askNumberofCharacters);
