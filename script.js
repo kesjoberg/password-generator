@@ -1,6 +1,4 @@
-// Assignment Code
-
-//Starting values for variables
+//Starting values for universal variables
 var numberOfCharacters = 0;
 var specialCharsAllowed = false;
 var numbersAllowed = false;
@@ -21,6 +19,7 @@ function askAllTheQuestions(){
   numberOfCharacters = parseInt(askNumberofCharacters);
   console.log(numberOfCharacters);
 
+ //Assuring that the password is between 8-128 character, that the user did not click cancel or enter a string.
   if( numberOfCharacters < 8 || numberOfCharacters > 128 || isNaN(numberOfCharacters)){
     alert("You MUST enter a value between 8 and 128");
     return; 
@@ -48,6 +47,7 @@ function askAllTheQuestions(){
   upperCaseAllowed = window.confirm("Would you like to include UPPER case letters in your password? Click 'Ok' for yes and 'Cancel' for no.");
   console.log(upperCaseAllowed);
 
+  //Assuring the user selected at least 1 type of character, else they return to the beginning.
   if ( numbersAllowed !== true && specialCharsAllowed !== true && lowerCaseAllowed !== true && upperCaseAllowed !== true ){
     alert("You need to select at least one type of character. Try again");
     return;
@@ -55,8 +55,6 @@ function askAllTheQuestions(){
 }
 
   // Functions for getting the types of characters the user would like
-
-
 function getSpecChar () {
   var symbols= ""
     if (specialCharsAllowed) {
@@ -89,6 +87,7 @@ function getUpperCase () {
     return uc;
 }
 
+//Function for getting a string of all characters the user selected.
 function characterSet(){
   var characters= (getSpecChar() + getNumbers() + getLowerCase() + getUpperCase());
   return characters;
@@ -96,6 +95,7 @@ function characterSet(){
 
 var generateBtn = document.querySelector("#generate");
 
+// Generating the password for the selected length and characters. 
 function generatePassword() {
   askAllTheQuestions();
 
@@ -106,12 +106,8 @@ function generatePassword() {
     result += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length))
     console.log(result)
   }
-
   return result;
-  
 }
-
-// function generatePassword()
 
 // Write password to the #password input
 function writePassword() {
